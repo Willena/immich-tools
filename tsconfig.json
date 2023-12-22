@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "./*",
+    "./package.json"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
