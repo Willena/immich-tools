@@ -1,5 +1,7 @@
-export const groupBy = <T, K extends keyof any>(arr: T[], key: (i: T) => K) =>
+import {MultiMap} from "../models/checksumMap";
+
+export const groupBy = <T, K>(arr: T[], key: (i: T) => K) =>
     arr.reduce((groups, item) => {
-        (groups[key(item)] ||= []).push(item);
+        groups.push(key(item), item)
         return groups;
-    }, {} as Record<K, T[]>);
+    }, new MultiMap<K, T>());

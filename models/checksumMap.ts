@@ -2,8 +2,32 @@ import fs from "fs/promises";
 import {HashItem} from "./hashItem";
 
 export class MultiMap<K, V> extends Map<K, V[]> {
+
+    set(key: K, value: V[]): this {
+        return super.set(this.getHash(key), value)
+    }
+
+    get(key: K): V[] | undefined {
+        return super.get(this.getHash(key))
+    }
+
+    private getHash(key: K): K {
+        let realKey;
+        if ((key as any).hashCode) {
+            realKey = (key as any).hashCode()
+        } else {
+            realKey = JSON.stringify(key)
+        }
+        return realKey
+    }
+
+
     push(key: K, ...values: V[]) {
-        this.set(key, this.has(key) ? [...this.get(key), ...values] : [...values])
+        const content = this.get(key)
+        if (content) {
+            console.log("Already exists", key)
+        }
+        this.set(key, content ? [...content, ...values] : [...values])
     }
 
     merge(map: MultiMap<K, V>) {

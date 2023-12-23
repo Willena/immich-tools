@@ -22,3 +22,4 @@ Run `immich-tools help` to see the command usage
 * _**dedup**: Find assets that looks the same based on perceptual hashes_
 
 Tools listed in _Italic_ are still under development
+ 
