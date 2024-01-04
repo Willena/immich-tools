@@ -62,6 +62,7 @@ program.command("merge")
 
 program.command("stack")
     .description("Tool that tries to match pictures that are stackable automatically")
+    .addOption(new Option('-p, --progress', 'Add all assets to the specified album name').default(false))
     .action(async (options) => {
         await new StackerAction(options).run();
     })

@@ -24,9 +24,6 @@ export class MultiMap<K, V> extends Map<K, V[]> {
 
     push(key: K, ...values: V[]) {
         const content = this.get(key)
-        if (content) {
-            console.log("Already exists", key)
-        }
         this.set(key, content ? [...content, ...values] : [...values])
     }
 
